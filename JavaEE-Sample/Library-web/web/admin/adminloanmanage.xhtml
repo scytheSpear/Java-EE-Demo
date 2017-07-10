@@ -1,0 +1,90 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core">
+    
+<h:head>
+    <title>#{indexController.pageTitle}</title>
+    <h:outputStylesheet name="cssfile.css" />
+</h:head>
+<h:body>
+<div class="page">
+    
+<header>
+    <h1>#{webInfo.adminHeader}</h1>
+</header>
+
+<article>
+    <h2>#{indexController.adminTitle}</h2>
+    <br/>
+   
+    <hr class="myHr"/>
+    
+    <h:form>
+           <h1>Book Loans Management</h1>
+        <br/>
+        <section>
+            <h:dataTable id="loanList"  value="#{loanController.loans}" var="l"  styleClass="outerTable" headerClass="listTable"  footerClass="listTable" columnClasses="checkBoxStyle,custNameStyle,notesStyle" width="90%" cellpadding="0" cellspacing="0" rowClasses="listContentEven,listContentOdd" border="1" >
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Id"/>
+                        </f:facet>
+                        <h:outputText value="#{l.id}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="User Name"/>
+                        </f:facet>
+                        <h:outputText value="#{l.user.username}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="User Email"/>
+                        </f:facet>
+                        <h:outputText value="#{l.user.email}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Book Title"/>
+                        </f:facet>
+                        <h:outputText value="#{l.book.title}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Book Author"/>
+                        </f:facet>
+                        <h:outputText value="#{l.book.author}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Loan Date"/>
+                        </f:facet>
+                        <h:outputText value="#{l.loandate}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Actions"/>
+                        </f:facet>
+                        <p class="myButton">
+                            <h:commandButton action="#{loanController.readLoan(l)}" value="Edit"/>
+                            <h:commandButton action="#{loanController.deleteLoan(l)}" value="Delete" /></p>
+                    </h:column>
+                </h:dataTable>
+                <hr />
+                <h:commandButton action="#{loanController.setupLoan()}" value="Add new Loans" />
+                <br/>
+                <h:commandButton action="index" value="Back to Index" />
+            
+        </section>
+    </h:form>  
+    </article>    
+    
+        <footer>
+            <h2>#{webInfo.pageFooter}</h2>
+        </footer>
+</div>
+</h:body>
+</html>
+

@@ -1,0 +1,36 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core">
+    
+<h:head>
+    <title>#{indexController.errorTitle}</title>
+    <h:outputStylesheet name="cssfile.css" />
+</h:head>
+<h:body>
+<div class="page">
+    
+<header>
+    <h1>#{webInfo.errorHeader}</h1>
+</header>
+
+<article>
+    <h2>#{indexController.errorTitle}</h2>
+    <br/>
+   
+    <hr class="myHr"/>
+        <h1>Authentication Error</h1>
+        <p>The user credentials you have supplied are incorrect.</p>
+        <p>Please attempt to <h:link outcome="login" value="login" /> again.</p>
+          
+        </article>    
+    
+        <footer>
+            <h2>#{webInfo.pageFooter}</h2>
+        </footer>
+
+</div>
+</h:body>
+</html>

@@ -1,0 +1,92 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core">
+    
+<h:head>
+    <title>#{indexController.searchTitle}</title>
+    <h:outputStylesheet name="cssfile.css" />
+</h:head>
+<h:body>
+<div class="page">
+    
+<header>
+    <h1>#{webInfo.searchRHeader}</h1>
+</header>
+
+<article>
+    <h2>#{indexController.searchTitle}</h2>
+    <br/>
+   
+    <hr class="myHr"/>
+    
+    <h:form>
+           <h1>Book Management</h1>
+        <br/>
+        <section>
+            <!--<h:outputText value="#{searchController.temp}"/>-->
+            <h:dataTable id="BooksList"  value="#{searchController.searchAuthor}" var="item"  
+                        styleClass="outerTable" headerClass="listTable" footerClass="listTable" 
+                        columnClasses="checkBoxStyle,custNameStyle,notesStyle" width="90%" cellpadding="0" 
+                        cellspacing="0" rowClasses="listContentEven,listContentOdd" border="1" >
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Id"/>
+                        </f:facet>
+                        <h:outputText value="#{item.id}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Title"/>
+                        </f:facet>
+                        <h:outputText value="#{item.title}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Author"/>
+                        </f:facet>
+                        <h:outputText value="#{item.author}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="ISBN"/>
+                        </f:facet>
+                        <h:outputText value="#{item.ISBN}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Publish Date"/>
+                        </f:facet>
+                        <h:outputText value="#{item.publishDate}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Category"/>
+                        </f:facet>
+                        <h:outputText value="#{item.category.categoryname}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Description"/>
+                        </f:facet>
+                        <h:outputText value="#{item.description}"/>
+                    </h:column>
+                    
+                </h:dataTable>
+                <hr />
+                <br/>
+                <h:commandButton action="searchbook" value="Back to search page" />
+            
+        </section>
+    </h:form>  
+    </article>    
+    
+        <footer>
+            <h2>#{webInfo.pageFooter}</h2>
+        </footer>
+</div>
+</h:body>
+</html>
+

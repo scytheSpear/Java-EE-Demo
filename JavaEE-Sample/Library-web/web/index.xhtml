@@ -1,0 +1,90 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <h:head>
+        <title>#{indexController.pageTitle}</title>
+        <h:outputStylesheet name="cssfile.css" />
+    </h:head>
+    <h:body>
+        <div class="page">
+
+            <header>
+                <h1>#{webInfo.pageHeaders}</h1>
+            </header>
+
+            <article>
+                <h2>#{indexController.pageTitle}</h2>
+                <br/>
+
+                <hr class="myHr"/>
+
+                <h:form>
+                    <div class="newsPad" id="timeNews" >
+                        <h2><h:outputText value="Library Opening hours"/></h2>
+                        <hr class="myHr"/>
+                        <table border="0"/>
+                        <td>
+                            <p><h:outputLabel value="Monday"/></p>
+                            <p><h:outputLabel value="8:00 - 21:00"/></p>           
+                        </td>
+                        <tr>
+                            <td><p><h:outputLabel value="Tuesday"/></p></td>
+                            <td><p><h:outputLabel value="8:00 - 21:00"/></p></td></tr>
+                        <tr>
+                            <td><p><h:outputLabel value="Wednesday"/></p></td>
+                            <td><p><h:outputLabel value="8:00 - 21:00"/></p></td></tr>
+                        <tr>
+                            <td><p><h:outputLabel value="Thursday"/></p></td>
+                            <td><p><h:outputLabel value="8:00 - 21:00"/></p></td></tr>
+                        <tr>
+                            <td><p><h:outputLabel value="Friday"/></p></td>
+                            <td><p><h:outputLabel value="8:00 - 21:00"/></p></td></tr>
+                        <tr>
+                            <td><p><h:outputLabel value="Saturday"/></p></td>
+                            <td><p><h:outputLabel value="10:00 - 18:00"/></p></td></tr>
+                        <tr>
+                            <td><p><h:outputLabel value="Sunday"/></p></td>
+                            <td><p><h:outputLabel value="10:00 - 20:00"/></p></td></tr>
+                    </div>
+                    <br/>
+                    <section>
+                        <ul id="newsList" class="myList">
+                            <ui> <H2> <h:link value="Library News" /> </H2> </ui>
+                            <ui:repeat value="#{newsApplication.news}" var="news" varStatus="status">
+                                <li>
+                                    <h:link value="#{news.newstitle}" outcome="news">
+                                        <f:param name="newsID" value="#{status.index + 1}"></f:param>
+                                    </h:link>
+                                </li>
+                            </ui:repeat> 
+                        </ul>
+                        <br/>
+
+                        <ul id="links" class="myList">
+                            <ui> <H2> <h:link value=" Library Home" /> </H2> </ui>
+                            <ui>
+                                <li><h:link outcome="faces/admin/index.xhtml"> Access Administration </h:link></li>
+                                <li><h:link outcome="faces/user/index.xhtml">User Login</h:link></li>
+                                <li><h:link id="registration" outcome="#{userController.regUser()}" value="User Registration"/> </li>
+                                <li><h:link outcome="faces/searchbook.xhtml">Search Book</h:link></li>
+
+                            </ui> 
+                        </ul>
+                    </section>
+                    <br/><br/>
+
+
+                </h:form>  
+            </article>    
+
+            <footer>
+                <h2>#{webInfo.pageFooter}</h2>
+            </footer>
+
+        </div>
+    </h:body>
+</html>

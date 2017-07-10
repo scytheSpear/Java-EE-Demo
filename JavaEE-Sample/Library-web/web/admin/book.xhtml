@@ -1,0 +1,68 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core">
+    
+<h:head>
+    <title>#{indexController.pageTitle}</title>
+    <h:outputStylesheet name="cssfile.css" />
+</h:head>
+<h:body>
+<div class="page">
+    
+<header>
+    <h1>#{webInfo.adminHeader}</h1>
+</header>
+
+<article>
+    <h2>#{indexController.adminTitle}</h2>
+    <br/>
+   
+    <hr class="myHr"/>
+    
+    <h:form>
+           <h1>Create/Edit Books</h1>
+        <br/>
+        <section>
+                <h:panelGrid columns="2">
+                    
+                    <h:outputLabel value="Title:" for="title" />
+                    <h:inputText id="title" value="#{bookController.book.title}" title="Title" size="40" required="true" requiredMessage="Book title needed"/>
+                    
+                    <h:outputLabel value="Author:" for="author" />
+                    <h:inputText id="author" value="#{bookController.book.author}" title="Author" size="40" required="true" requiredMessage="Book author needed" />
+                    <h:outputLabel value="ISBN: " for="ISBN" />
+                    <h:inputText id="ISBN" value="#{bookController.book.ISBN}" title="ISBN" size="10" required="true" requiredMessage="Book ISBN needed"/>
+                    <h:outputLabel value="Publisher Year:" for="PublisherYear" />
+                    <h:inputText id="publishDate" value="#{bookController.book.publishDate}" title="PublisherYear" size="5" />
+                    <h:outputLabel value="Category:" for="category" />
+                   
+                    <h:selectOneMenu value ="#{bookController.cid}" title="category">
+                        <f:selectItems value="#{categoryController.categories}" var="currentCa" 
+                                       itemValue="#{currentCa.id}" itemLabel="#{currentCa.categoryname}" />    
+                    </h:selectOneMenu>
+
+                    
+                    <h:outputLabel value="Description:" for="description" />
+                    <h:inputText id="description" value="#{bookController.book.description}" title="Description" />
+                </h:panelGrid>
+                
+            <h:commandButton id="create" value="Create" rendered="#{empty bookController.book.id}" action="#{bookController.creatBook()}"/>
+               
+     
+                <h:commandButton id="update" value="Update" rendered="#{not empty bookController.book.id}" action="#{bookController.updateBook()}"/>
+                <h:commandButton id="back" value="Back" action="showbooks"/>
+             </section>
+        </h:form>  
+    </article>    
+    
+        <footer>
+            <h2>#{webInfo.pageFooter}</h2>
+        </footer>
+</div>
+</h:body>
+</html>
+
+
